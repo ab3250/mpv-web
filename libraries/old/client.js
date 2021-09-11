@@ -1,6 +1,7 @@
 /* eslint-disable no-return-assign */
 'use strict'
-const BasicMPVClient = require('./base').default.BasicMPVClient
+
+// const BasicMPVClient = require('./base').default.BasicMPVClient
 
 function stripFirstWord (str) {
   return str.replace(/^[a-z]+/, '')
@@ -115,5 +116,4 @@ class MPVClient extends BasicMPVClient {
   /* loading handled by proxy loadlist()/loadfile() */
   /* playlist handled by proxy playlistNext()/playlistPrev()/playlistClear()/playlistRemove()/playlistRemove()/playlistShuffle() */
 }
-
 module.exports = { MPVClient }

@@ -1,13 +1,33 @@
 /*
 
 */
-//const socketFile = '/tmp/mpvsocket'
-//const MPVClient = require('./www/assets/js/client.js').MPVClient
+// const socketFile = '/tmp/mpvsocket'
+// const MPVClient = require('./www/assets/js/client.js')
+// const exec = require('child_process').exec
+// const readdirSync = require('fs').readdirSync
 
+// const mpvObj = exec('mpv', {}) //  mpvObj
+// const player = MPVClient(socketFile)
+//import { readdirSync } from 'fs'
+const mpvAPI = require('node-mpv')
+const mpv = new mpvAPI()
+async function mainloop()
+{
+try{
+	await mpv.start()
+	// loads a file
+	await mpv.load('http://localhost:8000/Music/car/CACTUS-DayForNight.flac');
+	// file is playing
+	// sets volume to 70%
+	await mpv.volume(50);
+  }
+  catch (error) {
+	// handle errors here
+	console.log(error);
+  }
+}
 
-
-
-
+mainloop()
 /* */
 const WSServer = require('ws').Server
 const WSSrv = new WSServer({port: 8080}); // the webSocket server
