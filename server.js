@@ -1,18 +1,17 @@
 /*
-WebSocket server example
 
-The 'public' directory contains a p5.js sketch and HTML page that will connect to this server and put the sensor data in the HTML page.
-
-created 11 Nov 2017
-by Tom Igoe
 */
-var WebSocketServer = require('ws').Server;   // webSocket library
+//const socketFile = '/tmp/mpvsocket'
+//const MPVClient = require('./www/assets/js/client.js').MPVClient
 
-// configure the webSocket server:
-const wssPort = process.env.PORT || 8081;             // port number for the webSocket server
-const wss = new WebSocketServer({port: wssPort}); // the webSocket server
-var clients = new Array;         // list of client connections
 
+
+
+
+/* */
+const WSServer = require('ws').Server
+const WSSrv = new WSServer({port: 8080}); // the webSocket server
+let clients = new Array;         // list of client connections
 
 // ------------------------ webSocket Server functions
 function handleConnection(client, request) {
@@ -48,4 +47,4 @@ function broadcast(data) {
 }
 
 // listen for clients and handle them:
-wss.on('connection', handleConnection);
+WSSrv.on('connection', handleConnection);
