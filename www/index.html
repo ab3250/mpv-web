@@ -1,0 +1,208 @@
+<! –– template ––>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>listing directory {directory}</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  </head>
+
+  <body class="wrapper">
+    <div class="container-fluid">
+<!--        <div class="row align-items-center">
+        <div class="col-12 ">
+          row 1
+        </div>
+       <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+          <span id="modedisplay" class="modedisplay">Playlist</span>
+        </div> 
+      </div> --> <!-- end row -->
+      <!--      <div class="row align-items-center">
+         <div class="col-12">
+        row2
+        </div>
+  <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col ">
+
+        </div>
+        <div class="col-3">
+
+        </div> 
+      </div> --> <!-- end row -->
+      <div class="row  align-items-center">
+
+        <div class="col-1">
+
+        </div>
+        <div class="col-5  d-flex justify-content-center align-items-center">
+          <!-- <div class="btn-group h-75 mr-8 btn-border d-flex flex-wrap" role="group" aria-label="First group align-items-center"> -->
+            <!-- <div class="btn-div">Playback</div>
+            <button id="playAllBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left">Play All</button>
+            <button id="pauseBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c"><span id="pauseLed" class="led"></span>Pause</button>
+            <button id="stopBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">Stop</button>
+            <button id="backBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">Back</button>
+            <button id="forwardBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right align-items-center">Forward</button> -->
+          </div>
+        </div>
+        <div class="col-3">
+     
+        </div>
+        <div class="col-3">
+     
+        </div>
+      </div> <!-- end row -->
+      <div class="row align-items-center pad2">
+      <div class="col-3 ">
+   <!--      <div class="btn-full btn-group h-75 mr-8 btn-border d-flex flex-wrap" role="group" aria-label="third group">
+          <div class="btn-div">Navigation</div>
+          <button id="minusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left">-</button>
+          <button id="plusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">+</button>
+          <button id="muteBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right">Mute</button>
+        </div> -->
+      </div>
+      <div class="col-3">
+        <!-- <div class="btn-group h-75 mr-8 btn-border d-flex flex-wrap" role="group" aria-label="First group">
+          <div class="btn-div">Playlist</div>
+          <button id="shuffleBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left"><span
+              id="shuffleLed" class="led"></span>Shuffle</button>
+          <button id="modeBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">Mode</button>
+          <button id="clearBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right">Clear</button>
+        </div> -->
+      </div>
+       <div class="col-3">
+    <!--     <div class="btn-full btn-group h-75 mr-8 btn-border d-flex flex-wrap" role="group" aria-label="third group">
+          <div class="btn-div">Volume</div>
+          <button id="minusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left">-</button>
+          <button id="plusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">+</button>
+          <button id="muteBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right">Mute</button>
+        </div> -->
+      </div>
+      <div class="col-3">
+  
+      </div>
+    </div> <!-- end row -->
+    <div class="row align-items-center">
+      <div class="col-4 align-items-center">
+       <h5>Library</h5>
+      </div>
+      <div class="col-4  align-items-center" >
+        <h5>Playlist</h5>
+      </div>
+      <div class="col-4">
+        <h5>Controls</h5>
+      </div>        
+    </div> <!-- end row -->
+
+
+    <div class="row align-items-center pad2">
+      <div class="col-12 ">
+        <span id="breadcrumbs" class="pad1">
+      </div>      
+     </div> <!-- end row -->
+        
+    </div> <!-- end row -->
+      <div class="row align-items-center">
+        <div class="col-4 align-items-center">
+          <button id="homebtn" class="homebtn"></button><button id="upbtn" class="upbtn"></button>
+        </div>
+        <div class="col-4  align-items-center" >
+        
+        </div>
+        <div class="col-4">
+        
+        </div>        
+      </div> <!-- end row -->
+
+
+      <div class="row"> <!-- library display div -->       
+        <div id="library" class="col-4 d-flex justify-content-left ">  
+          <div id="inner-library"  class="btn-full btn-group  mr-8 btn-border d-flex flex-wrap padless" role="group" aria-label="third group"></div>        
+        </div>
+        <div id="playlist" class="col-4 d-flex justify-content-left">  
+          <div id="inner-playlist" class="btn-full btn-group  mr-8 btn-border d-flex flex-wrap padless" role="group" aria-label="third group"></div>        
+        </div>
+        <div id="control-col1" class="col-4 d-flex justify-content-left ">
+          <div style="height:375px;" class="btn-full btn-group  mr-8 btn-border d-flex flex-wrap padless" role="group" aria-label="third group">
+<!--  -->
+            <div class="btn-div">Navigation</div>
+            <button id="minusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left">-</button>
+            <button id="plusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">+</button>
+            <button id="muteBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right">Mute</button>
+<!--  -->
+            <div class="btn-div">Volume</div>
+            <button id="minusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left">-</button>
+            <button id="plusBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">+</button>
+            <button id="muteBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right">Mute</button>
+<!--  -->
+            <div class="btn-div">Playlist</div>
+            <button id="shuffleBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left"><span id="shuffleLed" class="led"></span>Shuffle</button>
+            <button id="modeBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c">Mode</button>
+            <button id="clearBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right">Clear</button>
+<!-- -->
+            <div class="btn-div">Playback</div>
+            <button id="playAllBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left">Play All</button>
+            <button id="pauseBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-c"><span id="pauseLed" class="led"></span>Pause</button>
+            <button id="stopBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right">Stop</button>
+<!--  -->
+            <div class="btn-div">Tracks</div>
+            <button id="backBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-l rounded-left">Back</button>
+            <button id="forwardBtn" class="btn btn-sm btn-outline-secondary btn-mrg-fix-r rounded-right align-items-center">Forward</button>
+<!-- -->
+          </div>
+        </div>
+        
+      </div> <!-- end row -->
+    </div> <!-- end container -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+    <script type="text/javascript" src='./assets/js/mpvv2.js'></script>
+    <script type="text/javascript" src='./assets/js/axios.min.js'></script>
+    <!--
+          <script type="text/javascript" src='/assets/srv-indx.js'></script>
+          <script src="/assets/jquery.slim.min.js"></script>
+          <script src="/assets/popper.min.js"></script>
+          <script src="/assets/bootstrap.min.js"></script>
+         -->
+  </body>
+
+  </html>

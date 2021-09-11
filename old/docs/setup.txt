@@ -1,0 +1,2 @@
+npm install serve-index express
+ln -s /media/ab/nas/Multimedia/Music Music

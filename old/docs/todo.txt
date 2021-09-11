@@ -1,0 +1,51 @@
+set buttons on refresh
+add volume
+fix sudo on zotac
+make sure mode change completes
+
+  // player.command('disable_event', 'metadata-update')
+  // player.command('disable_event', 'file-loaded')
+  // player.command('disable_event', 'audio-reconfig')
+  // player.command('disable_event', 'start-file')
+  // player.command('disable_event', 'pause')
+  // player.command('disable_event', 'tracks-changed')
+  // player.command('disable_event', 'end-file')
+  // player.command('disable_event', 'idle')
+
+[ab@manjaro MPV]$ ssh ab@192.168.1.78
+Last login: Sat Jun 13 15:37:38 2020 from 192.168.1.75
+[ab@zotac ~]$ echo '{"command": ["unobserve_property", 1, "audio-reconfigure"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"invalid parameter"}
+[ab@zotac ~]$ echo '{"command": ["unobserve_property", "audio-reconfigure"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"invalid parameter"}
+[ab@zotac ~]$ echo '{"command": ["unobserve_property", "playlist"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"invalid parameter"}
+[ab@zotac ~]$ echo '{"command": ["observe_property", 1, "playlist"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"success"}
+[ab@zotac ~]$ echo '{"command": ["unobserve_property", "playlist"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"invalid parameter"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "metadata-update"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"success"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "file-loaded"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"success"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "audo-reconfigure"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"invalid parameter"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "audio-reconfigure"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"invalid parameter"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "audio-reconfig"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"success"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "file-loaded"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"success"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "pause"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"success"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "audio-reconfig"]}'| socat - /tmp/mpvsocket
+{"request_id":0,"error":"success"}
+[ab@zotac ~]$ echo '{"command": ["disable_event", "audio-reconfig"]}'| socat - /tmp/mpvsocket
+
+
+disable all event re-enable playlist and playback-restart
+
+put idle and socket in config file
+
+add playlist dirty and only send playlist at that time.
+clear music of bad characters
