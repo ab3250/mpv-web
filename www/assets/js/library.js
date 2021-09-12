@@ -6,14 +6,13 @@ function startWSSrv(){
   ws = new WebSocket("ws://localhost:8080/ws")
   console.log("initialized websocket")
   ws.onmessage = function(evt) {
-    console.log(evt.data);
-  
+    console.log(evt.data)  
   }
   ws.onopen = function() {
-    console.log("connected");
+    console.log("connected")
   }
   ws.onclose = function() {
-    console.log("closed websocket");
+    console.log("closed websocket")
   }
 }
 
@@ -34,7 +33,7 @@ function fillLibraryArray(path) {
     .then (function (response) {
       // handle success
       globalCurrentLibPath = response.config.url
-      console.log(pathRemoveLast(globalCurrentLibPath))
+      pathRemoveLast(globalCurrentLibPath)
       document.getElementById('breadcrumbs').innerHTML = globalCurrentLibPath
   
       renderLibraryPage(response)      
@@ -63,7 +62,12 @@ function renderLibraryPage(jsonObj){
     ul.appendChild(li) 
     li.onclick=element.type==="directory"
       ?function () {fillLibraryArray(globalCurrentLibPath + '\\' + element.name)}
-      :function () {element.path=globalCurrentLibPath; playlistArray.push(element);renderPlaylistPage(playlistArray)}
+      :function () {
+        element.type="mm"
+        element.path=globalCurrentLibPath
+        playlistArray.push(element)        
+        renderPlaylistPage(playlistArray)
+      }
   })
 }
 
@@ -79,12 +83,15 @@ function renderPlaylistPage(playlistArray){
     li.innerText=element.name
     li.style.listStyleImage="url('./assets/img/969821.png')"
     ul.appendChild(li) 
-    li.onclick=function () {const audioElement = new Audio(element.path + '\\' + element.name)
-                           // audioElement.play()
-                           const regex = /\//g;
-                           const str = (element.path + '\\' + element.name).replace(/\\/g,"\/")
-                            ws.send("{\"type\": \"mm\",\"data\": \"" + str + "\"}")                            
-                            }
+    li.onclick=function () {//const audioElement = new Audio(element.path + '\\' + element.name)                                     
+                          ws.send(JSON.stringify(element))
+
+                           // audioElement.play()                        
+                         //  const str = (element.path + '\\' + element.name).replace(/\\/g,"\/")
+                         //   ws.send("{\"type\": \"mm\",\"data\": \"" + str + "\"}")                            
+    
+    
+                          }
   })
 }
 

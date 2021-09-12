@@ -51,11 +51,12 @@ function handleConnection(client, request) {
 	async function clientResponse(data) {
 		res = JSON.parse(data)
 	 	if(res.type==='mm'){
-			console.log(res.data)
-			await mpv.load('http://localhost:8000' + res.data)
+//TODO: why is this necessa & change to path
+			console.log('http://localhost:8000' + (res.path + "\\" + res.name).replace(/\\+/g,"\/"))
+			await mpv.load('http://localhost:8000' + (res.path + "\\" + res.name).replace(/\\+/g,"\/"))
 			mpv.fullscreen ()
 		}else if (res.type==='cmd'){
-			console.log(res.data)
+			console.log(res.name)
 		} 
 		//console.log(request.connection.remoteAddress + ': ' + data);
 		broadcast(request.connection.remoteAddress + ': ' + data);
