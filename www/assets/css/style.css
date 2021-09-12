@@ -376,7 +376,7 @@ h5{
 
 }
 
-.upbtn {
+.upbutton {
   background:url(../img/upbtn.png) no-repeat;
   cursor:pointer;
   width: 20px;
@@ -387,7 +387,7 @@ h5{
   border: none;
 }
 
-.homebtn {
+.homebutton {
   background:url(../img/homebtn.png) no-repeat;
   cursor:pointer;
   width: 20px;

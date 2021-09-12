@@ -3,7 +3,9 @@ let playlistArray= []
 
 window.addEventListener('load', loadWindow, false)
 
-
+function controlBtn(data){
+  ws.send("{\"type\": \"cmd\",\"data\": \"" + data+ "\"}")  
+}
 
 
 
@@ -12,8 +14,14 @@ window.addEventListener('load', loadWindow, false)
 
 function loadWindow () {
   startWSSrv()
-  document.getElementById('upbtn').onclick = function () { upbtn() }
-  document.getElementById('homebtn').onclick = function () { homebtn() }
+  document.getElementById('upbutton').onclick = function () { upbutton() }
+  document.getElementById('homebutton').onclick = function () { homebutton() }
+  Array.from(document.getElementsByTagName('button')).forEach(function (value, i, col) {      
+    if(/.*Btn$/.test(value.id)){     
+     col[i].onclick = function (e) { controlBtn(e.target.id) }
+    }
+   })
+  
   //Array.from(document.getElementsByTagName('button')).forEach(function (value, i, col) {
   //  col[i].onclick = function (e) { mode(e.target.id) }
   // })

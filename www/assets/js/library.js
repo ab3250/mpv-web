@@ -19,11 +19,11 @@ function startWSSrv(){
 
 /* event handlers */
 
-function upbtn(){
+function upbutton(){
   fillLibraryArray(pathRemoveLast(globalCurrentLibPath))
 }
 
-function homebtn(){
+function homebutton(){
   fillLibraryArray('\\Music')
 }
 
@@ -80,8 +80,10 @@ function renderPlaylistPage(playlistArray){
     li.style.listStyleImage="url('./assets/img/969821.png')"
     ul.appendChild(li) 
     li.onclick=function () {const audioElement = new Audio(element.path + '\\' + element.name)
-                            audioElement.play()
-                            ws.send("hello2")
+                           // audioElement.play()
+                           const regex = /\//g;
+                           const str = (element.path + '\\' + element.name).replace(/\\/g,"\/")
+                            ws.send("{\"type\": \"mm\",\"data\": \"" + str + "\"}")                            
                             }
   })
 }

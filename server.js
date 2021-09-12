@@ -16,10 +16,10 @@ async function mainloop()
 try{
 	await mpv.start()
 	// loads a file
-	await mpv.load('http://localhost:8000/Music/car/CACTUS-DayForNight.flac');
+//	await mpv.load('http://localhost:8000/Music/m2ts/BWA-BR/00021.m2ts');
 	// file is playing
 	// sets volume to 70%
-	await mpv.volume(50);
+	await mpv.volume(70);
   }
   catch (error) {
 	// handle errors here
@@ -48,8 +48,16 @@ function handleConnection(client, request) {
 	}
 
 	// if a client sends a message, print it out:
-	function clientResponse(data) {
-		console.log(request.connection.remoteAddress + ': ' + data);
+	async function clientResponse(data) {
+		res = JSON.parse(data)
+	 	if(res.type==='mm'){
+			console.log(res.data)
+			await mpv.load('http://localhost:8000' + res.data)
+			mpv.fullscreen ()
+		}else if (res.type==='cmd'){
+			console.log(res.data)
+		} 
+		//console.log(request.connection.remoteAddress + ': ' + data);
 		broadcast(request.connection.remoteAddress + ': ' + data);
 	}
 
