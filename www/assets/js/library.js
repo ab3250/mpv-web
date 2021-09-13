@@ -17,13 +17,27 @@ function startWSSrv(){
 }
 
 /* event handlers */
+/* process buttons */
 
-function upbutton(){
-  fillLibraryArray(pathRemoveLast(globalCurrentLibPath))
-}
-
-function homebutton(){
-  fillLibraryArray('\\Music')
+function controlBtn(data){
+  switch(data){
+    case 'libraryUpBtn':
+      fillLibraryArray(pathRemoveLast(globalCurrentLibPath))
+      break
+    case 'libraryHomeBtn':
+      fillLibraryArray('\\Music')
+      break
+      case 'volumePlusBtn':        
+        break
+      case 'volumeMinusBtn':        
+        break
+      case 'volumeMuteBtn':        
+        break
+      case 'plusBtn':        
+        break
+    default: 
+       ws.send("{\"type\": \"cmd\",\"name\": \"" + data+ "\"}") 
+  }
 }
 
 /* library rendering */
@@ -61,7 +75,9 @@ function renderLibraryPage(jsonObj){
     li.style.listStyleImage=element.type==="directory"?"url('./assets/img/folder.png')":"url('./assets/img/969821.png')"
     ul.appendChild(li) 
     li.onclick=element.type==="directory"
-      ?function () {fillLibraryArray(globalCurrentLibPath + '\\' + element.name)}
+      ?function () {
+        fillLibraryArray(globalCurrentLibPath + '\\' + element.name)        
+      }
       :function () {
         element.type="mm"
         element.path=globalCurrentLibPath
@@ -83,15 +99,9 @@ function renderPlaylistPage(playlistArray){
     li.innerText=element.name
     li.style.listStyleImage="url('./assets/img/969821.png')"
     ul.appendChild(li) 
-    li.onclick=function () {//const audioElement = new Audio(element.path + '\\' + element.name)                                     
-                          ws.send(JSON.stringify(element))
-
-                           // audioElement.play()                        
-                         //  const str = (element.path + '\\' + element.name).replace(/\\/g,"\/")
-                         //   ws.send("{\"type\": \"mm\",\"data\": \"" + str + "\"}")                            
-    
-    
-                          }
+    li.onclick=function () {
+      ws.send(JSON.stringify(element))
+    }
   })
 }
 

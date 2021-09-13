@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
 echo "hendrix1970" | sudo -S killall nginx
+echo "hendrix1970" | sudo -S killall mpv
+echo "hendrix1970" | sudo -S killall node
+
+
 
 sed -i '/.*set \$rtdir.*/c\set $rtdir '"$(pwd)"/www';' $(pwd)/nginx.conf
 
-sudo $(pwd)/nginx/sbin/nginx -c $(pwd)/nginx.conf -p $(pwd)/nginx &
+echo "hendrix1970" | sudo -S  $(pwd)/nginx/sbin/nginx -c $(pwd)/nginx.conf -p $(pwd)/nginx &
 
 node ./server.js
 

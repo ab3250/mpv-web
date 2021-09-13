@@ -19,7 +19,7 @@ try{
 //	await mpv.load('http://localhost:8000/Music/m2ts/BWA-BR/00021.m2ts');
 	// file is playing
 	// sets volume to 70%
-	await mpv.volume(70);
+	await mpv.volume(100);
   }
   catch (error) {
 	// handle errors here
@@ -51,17 +51,14 @@ function handleConnection(client, request) {
 	async function clientResponse(data) {
 		res = JSON.parse(data)
 	 	if(res.type==='mm'){
-//TODO: why is this necessa & change to path
-		//	console.log('http://localhost:8000' + (res.path + "\\" + res.name).replace(/\\+/g,"\/"))
-			console.log('/media/nas/Multimedia/' + (res.path + "\\" + res.name).replace(/\\+/g,"\/"))
-			//await mpv.load('http://localhost:8000' + (res.path + "\\" + res.name).replace(/\\+/g,"\/"))
-			await mpv.load('/media/nas/Multimedia/' + (res.path + "\\" + res.name).replace(/\\+/g,"\/"))
-			mpv.fullscreen ()
-		}else if (res.type==='cmd'){
+								//websocket adds \\
+		await mpv.load('/media/nas/Multimedia/' + (res.path + "\\" + res.name).replace(/\\+/g,"\/"))
+		mpv.fullscreen ()
+		} else if (res.type==='cmd'){
 			console.log(res.name)
 		} 
-		console.log(request.connection.remoteAddress + ': ' + data)
-		broadcast(request.connection.remoteAddress + ': ' + data)
+		//console.log(request.connection.remoteAddress + ': ' + data)
+		//broadcast(request.connection.remoteAddress + ': ' + data)
 	}
 
 	// set up client event listeners:
@@ -71,6 +68,7 @@ function handleConnection(client, request) {
 
 // This function broadcasts messages to all webSocket clients
 function broadcast(data) {
+	console.log(data)
 	// iterate over the array of clients & send data to each
 	for (c in clients) {
 		clients[c].send(JSON.stringify(data));
